@@ -1,6 +1,6 @@
 # ParaPy Application Release GitHub Action
 
-This GitHub Action is provided by ParaPy to easily release and deploy ParaPy applications, to your ParaPy Cloud, with GitHub actions.
+This GitHub Action is provided by ParaPy to easily release and deploy ParaPy applications, to your ParaPy Cloud.
 
 Example workflow, utilizing the Action:
 
@@ -12,6 +12,10 @@ on:
       version:
         description: 'Application version to release'     
         required: true
+    deploy:
+        description: 'Whether to deploy the application if the release is successful'
+        type: boolean
+        default: false
 
 jobs:
   application-release:
@@ -28,6 +32,5 @@ jobs:
             service-account-secret: ${{vars.PARAPY_SERVICE_ACCOUNT_SECRET }}
             parapy-app-id: ${{vars.PARAPY_APP_ID }}
             parapy-app-version: ${{ inputs.version }}
-            test: true
-            deploy: false
+            deploy: ${{ inputs.deploy }}
 ```
