@@ -1,0 +1,59 @@
+name: 'ParaPy Application Test Action'
+description: 'Action to test ParaPy Applications'
+inputs:
+  license-key:
+    description: 'your license key, a.k.a. PARAPY_LICENSE_KEY_1,  necessary to use ParaPy'
+    required: true
+  license-certificate:
+    description: 'your license certificate, a.k.a. PARAPY_LICENSE_KEY_2, necessary to use ParaPy' 
+    required: true
+  parapy-pypi-address:
+    description: 'ParaPy PyPI python repository at which to obtain the ParaPy dependencies'
+    required: false
+    default: 'pypi.parapy.nl'
+  parapy-pypi-username:
+    description: 'user name for the ParaPy PyPI package repository'
+    required: true
+  parapy-pypi-password:
+    description: 'password for the ParaPy PyPI package repository'
+    required: true
+
+branding:
+  icon: 'check-circle'
+  color: 'blue'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Use Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        architecture: 'x64'
+
+    - name: Setup
+      shell: bash
+      run: |
+        echo "Initialize setup for license"
+        sudo hostname ${{ inputs.license-key }}
+        pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 "wxPython~=4.2.1"
+        sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5DC22404A6F9F1CA
+        sudo apt-get update
+        sudo apt-get install -y --no-install-recommends build-essential cmake libdouble-conversion3 libgfortran4 libglu1-mesa libopengl0 libqt5core5a libqt5gui5 libqt5help5 libqt5opengl5 libqt5printsupport5 libqt5svg5 libqt5x11extras5 libqt5xml5 libsdl1.2debian libsdl2-2.0-0 libssl-dev libssl1.1 libtbb2
+
+    - name: Install test dependencies
+      shell: bash
+      run: >
+        pip install -r requirements-test.txt
+        --index-url https://${{ inputs.parapy-pypi-username }}:${{ inputs.parapy-pypi-password }}@${{ inputs.parapy-pypi-address }}/simple/
+
+    - name: Test the application
+      shell: bash
+      run: >
+        pytest
+      env:
+        PARAPY_LIC: ${{ inputs.license-certificate }}
+        PARAPY_HEADLESS: true
