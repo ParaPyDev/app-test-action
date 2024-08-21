@@ -11,7 +11,7 @@ on:
 
 jobs:
   application-testing:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - uses: parapydev/app-test-action
         with:
