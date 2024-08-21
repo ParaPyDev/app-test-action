@@ -1,5 +1,5 @@
-name: 'ParaPy Application Release Action'
-description: 'Action to release and deploy ParaPy Applications'
+name: 'ParaPy Application Test Action'
+description: 'Action to test ParaPy Applications'
 inputs:
   license-key:
     description: 'your license key, a.k.a. PARAPY_LICENSE_KEY_1,  necessary to use ParaPy'
@@ -8,15 +8,19 @@ inputs:
     description: 'your license certificate, a.k.a. PARAPY_LICENSE_KEY_2, necessary to use ParaPy' 
     required: true
   parapy-pypi-address:
-    description: 'ParaPy PyPi python repository at which to obtain the ParaPy dependencies'
+    description: 'ParaPy PyPI python repository at which to obtain the ParaPy dependencies'
     required: false
     default: 'pypi.parapy.nl'
   parapy-pypi-user-name:
-    description: 'user name for the ParaPy PyPi package repository'
+    description: 'user name for the ParaPy PyPI package repository'
     required: true
   parapy-pypi-password:
-    description: 'password for the ParaPy PyPi package repository'
+    description: 'password for the ParaPy PyPI package repository'
     required: true
+
+branding:
+  icon: 'check-circle'
+  color: 'blue'
 
 runs:
   using: "composite"
@@ -43,7 +47,7 @@ runs:
       shell: bash
       run: >
         pip install -r requirements-test.txt
-        --index-url https://${{ inputs.parapy-pypi-user-name }}:${{ inputs.parapy-pypi-password }}@{{ inputs.parapy-pypi-address }}/simple/
+        --index-url https://${{ inputs.parapy-pypi-user-name }}:${{ inputs.parapy-pypi-password }}@${{ inputs.parapy-pypi-address }}/simple/
 
     - name: Test the application
       shell: bash

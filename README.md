@@ -1,6 +1,6 @@
 # ParaPy Application Test GitHub Action
 
-This GitHub Action is provided by ParaPy to easily release and deploy ParaPy applications, to your ParaPy Cloud.
+This GitHub Action is provided by ParaPy to easily test ParaPy applications.
 
 Example workflow, utilizing the Action:
 
