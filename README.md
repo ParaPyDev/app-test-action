@@ -1,6 +1,8 @@
 # ParaPy Application Test GitHub Action
 
-This GitHub Action is provided by ParaPy to easily test ParaPy applications.
+![ParaPy Logo](https://s3-eu-west-1.amazonaws.com/parapy-cache/wp-content/uploads/2016/12/22134017/Logo_margin.png)
+
+This GitHub Action is provided by [ParaPy](https://parapy.nl) to easily test ParaPy applications.
 
 Example workflow, utilizing the Action:
 
