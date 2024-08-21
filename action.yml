@@ -11,7 +11,7 @@ inputs:
     description: 'ParaPy PyPI python repository at which to obtain the ParaPy dependencies'
     required: false
     default: 'pypi.parapy.nl'
-  parapy-pypi-user-name:
+  parapy-pypi-username:
     description: 'user name for the ParaPy PyPI package repository'
     required: true
   parapy-pypi-password:
@@ -47,7 +47,7 @@ runs:
       shell: bash
       run: >
         pip install -r requirements-test.txt
-        --index-url https://${{ inputs.parapy-pypi-user-name }}:${{ inputs.parapy-pypi-password }}@${{ inputs.parapy-pypi-address }}/simple/
+        --index-url https://${{ inputs.parapy-pypi-username }}:${{ inputs.parapy-pypi-password }}@${{ inputs.parapy-pypi-address }}/simple/
 
     - name: Test the application
       shell: bash
