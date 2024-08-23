@@ -1,10 +1,10 @@
 name: 'ParaPy Application Test Action'
 description: 'Action to test ParaPy Applications'
 inputs:
-  license-key:
+  license-key-1:
     description: 'your license key, a.k.a. PARAPY_LICENSE_KEY_1,  necessary to use ParaPy'
     required: true
-  license-certificate:
+  license-key-2:
     description: 'your license certificate, a.k.a. PARAPY_LICENSE_KEY_2, necessary to use ParaPy' 
     required: true
   parapy-pypi-address:
@@ -38,7 +38,7 @@ runs:
       shell: bash
       run: |
         echo "Initialize setup for license"
-        sudo hostname ${{ inputs.license-key }}
+        sudo hostname ${{ inputs.license-key-1 }}
         pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 "wxPython~=4.2.1"
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5DC22404A6F9F1CA
         sudo apt-get update
@@ -55,5 +55,5 @@ runs:
       run: >
         pytest
       env:
-        PARAPY_LIC: ${{ inputs.license-certificate }}
+        PARAPY_LIC: ${{ inputs.license-key-2 }}
         PARAPY_HEADLESS: true

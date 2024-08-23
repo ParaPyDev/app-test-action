@@ -4,7 +4,7 @@
 
 This GitHub Action is provided by [ParaPy](https://parapy.nl) to easily test ParaPy applications.
 
-Example workflow (*with recommended usage of [secrets](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)/[vars](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables) usage for the different parameter*):
+Example workflow (*with recommended usage of [secrets](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)/[vars](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables) usage for the different parameters*):
 
 ```yaml
 name: Test your application
@@ -17,8 +17,8 @@ jobs:
     steps:
     - uses: parapydev/app-test-action
         with:
-            license-key: ${{ secrets.PARAPY_LICENSE_KEY_1 }}
-            license-certificate: ${{ secrets.PARAPY_LICENSE_KEY_2 }}
+            license-key-1: ${{ secrets.PARAPY_LICENSE_KEY_1 }}
+            license-key-2: ${{ secrets.PARAPY_LICENSE_KEY_2 }}
             parapy-pypi-username: ${{ vars.PARAPY_PYPI_USERNAME }}
             parapy-pypi-password: ${{ secrets.PARAPY_PYPI_PASSWORD }}
 ```
