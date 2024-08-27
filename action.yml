@@ -17,6 +17,10 @@ inputs:
   parapy-pypi-password:
     description: 'password for the ParaPy PyPI package repository'
     required: true
+  python-version:
+    description: 'Python version to use for test execution'
+    required: false
+    default: '3.11'
 
 branding:
   icon: 'check-circle'
@@ -31,7 +35,7 @@ runs:
     - name: Use Python 3.11
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: ${{ inputs.python-version }}
         architecture: 'x64'
 
     - name: Setup
