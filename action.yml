@@ -37,7 +37,7 @@ runs:
     - name: Setup
       shell: bash
       run: |
-        echo "Initialize setup for license"
+        echo "Running setup"
         sudo hostname ${{ inputs.license-key-1 }}
         pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 "wxPython~=4.2.1"
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5DC22404A6F9F1CA
