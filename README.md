@@ -23,5 +23,5 @@ jobs:
             parapy-pypi-password: ${{ secrets.PARAPY_PYPI_PASSWORD }}
 ```
 
-Please find descriptions for each parameter in the [pipeline specification](action.yaml).
+Please find descriptions for each parameter in the [pipeline specification](action.yml).
 
