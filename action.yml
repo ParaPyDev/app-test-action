@@ -42,7 +42,7 @@ runs:
         pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-22.04 "wxPython==4.2.1"
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5DC22404A6F9F1CA
         sudo apt-get update
-        sudo apt-get install -y --no-install-recommends build-essential cmake libdouble-conversion3 libquadmath0 libglu1-mesa libopengl0 libpcre2-32-0 libsdl-image1.2 libsdl1.2debian libsdl2-2.0-0 libtbbmalloc2 libwxgtk3.0-gtk3-dev libxtst6 locales xfonts-base xfonts-encodings xfonts-scalable xfonts-utils xvfb
+        sudo apt-get install -y --no-install-recommends build-essential cmake libdouble-conversion3 libquadmath0 libglu1-mesa libopengl0 libpcre2-32-0 libsdl-image1.2 libsdl1.2debian libsdl2-2.0-0 libtbbmalloc2 libwxgtk3.0-gtk3-dev libgtk-3-dev libxtst6 locales xfonts-base xfonts-encodings xfonts-scalable xfonts-utils xvfb
 
     - name: Install test dependencies
       shell: bash
