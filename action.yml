@@ -46,6 +46,7 @@ runs:
 
     - name: Install test dependencies
       shell: bash
+      continue-on-error: true
       run: >
         pip install -r requirements-test.txt
         --index-url https://${{ inputs.parapy-pypi-username }}:${{ inputs.parapy-pypi-password }}@${{ inputs.parapy-pypi-address }}/simple/ --no-input
