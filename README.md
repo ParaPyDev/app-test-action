@@ -21,6 +21,7 @@ jobs:
             license-key-2: ${{ secrets.PARAPY_LICENSE_KEY_2 }}
             parapy-pypi-username: ${{ vars.PARAPY_PYPI_USERNAME }}
             parapy-pypi-password: ${{ secrets.PARAPY_PYPI_PASSWORD }}
+            python-version: '3.13'
 ```
 
 Please find descriptions for each parameter in the [pipeline specification](action.yml). And find extensive information to obtain each input parameter in the [ParaPy pipeline documentation](https://parapy.nl/docs/cloud/latest/application_developer/cicd_pipelines.html#pipeline-parameters).
